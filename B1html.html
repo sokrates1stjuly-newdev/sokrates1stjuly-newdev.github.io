@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kho Truyện Manager</title>
+  <link rel="stylesheet" href="B1css.css">
+</head>
+<body>
+  <div class="shell">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-left">
+          <img src="logo1.1.png" alt="Logo" class="brand-logo">
+          <div class="brand-info">
+            <div class="brand-kicker">Dwq System</div>
+            <h2>Kho Truyện</h2>
+          </div>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" title="Đổi giao diện">☀️</button>
+      </div>
+      <div class="actions">
+        <button class="btn" id="btn-add-story">+ Truyện</button>
+        <button class="ghost" id="btn-add-cabinet">+ Tủ</button>
+      </div>
+      <nav id="sidebar-nav"></nav>
+    </aside>
+
+    <!-- Content Chính -->
+    <main>
+      
+      <section class="content-grid">
+        <!-- Cột trái: Bộ lọc & Danh sách thẻ -->
+        <div class="left-column">
+          <div class="filter-panel">
+            <div class="toolbar">
+              <input id="search" placeholder="Tìm theo tên, mô tả, tác giả, thể loại...">
+              <div class="sub-toolbar">
+                <select id="sort">
+                  <option value="title">Tên A-Z</option>
+                  <option value="title-desc">Tên Z-A</option>
+                </select>
+                <div id="story-count" class="chip">Tổng: 0</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="column-content">
+            <div id="cards-container" class="cards"></div>
+            <p id="empty-story-msg" class="outside-text">Chưa có truyện phù hợp.</p>
+          </div>
+        </div>
+
+        <!-- Đường kẻ phân cách dọc -->
+        <div class="divider-line"></div>
+
+        <!-- Cột phải: Tab Chi tiết & Nội dung -->
+        <div class="right-column">
+          <aside class="details-panel">
+            <h3>Chi tiết truyện</h3>
+          </aside>
+
+          <div class="column-content">
+            <div id="details-content"></div>
+            <p id="empty-detail-msg" class="outside-text" >Chọn một truyện để xem chi tiết.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- MODAL THÊM / SỬA TRUYỆN -->
+  <div id="modal-story" class="modal-backdrop" style="display: none;">
+    <div class="modal-box modal-lg">
+      <h3 id="modal-story-title">Thêm Truyện Mới</h3>
+      
+      <div class="form-row">
+        <div class="form-group flex-1">
+          <label>Tên truyện (*):</label>
+          <input type="text" id="input-title" placeholder="Nhập tên truyện...">
+        </div>
+        <div class="form-group flex-1">
+          <label>Tủ truyện:</label>
+          <select id="input-cabinet"></select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group flex-1">
+          <label>Tác giả:</label>
+          <input type="text" id="input-author" placeholder="Nhập tác giả...">
+        </div>
+        <div class="form-group flex-1">
+          <label>Thể loại:</label>
+          <input type="text" id="input-genre" placeholder="Nhập thể loại...">
+        </div>
+      </div>
+
+      <div class="form-group-desc">
+        <label>Mô tả:</label>
+        <textarea id="input-desc" placeholder="Nhập mô tả truyện..."></textarea>
+      </div>
+
+      <div class="modal-actions">
+        <button class="ghost" id="close-modal-story">Hủy</button>
+        <button class="btn" id="save-story">Lưu Truyện</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL THÊM TỦ -->
+  <div id="modal-cabinet" class="modal-backdrop" style="display: none;">
+    <div class="modal-box">
+      <h3>Thêm Tủ Truyện Mới</h3>
+      <div class="form-group">
+        <label>Tên tủ (*):</label>
+        <input type="text" id="input-cabinet-name" placeholder="Ví dụ: Đã đọc, Tiên hiệp...">
+      </div>
+      <div class="modal-actions">
+        <button class="ghost" id="close-modal-cabinet">Hủy</button>
+        <button class="btn" id="save-cabinet">Lưu Tủ</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL SỬA TỦ -->
+  <div id="modal-edit-cabinet" class="modal-backdrop" style="display: none;">
+    <div class="modal-box">
+      <h3>Sửa Tên Tủ Truyện</h3>
+      <div class="form-group">
+        <label>Tên tủ mới (*):</label>
+        <input type="text" id="input-edit-cabinet-name" placeholder="Nhập tên tủ mới...">
+      </div>
+      <div class="modal-actions">
+        <button class="ghost" id="close-modal-edit-cabinet">Hủy</button>
+        <button class="btn" id="save-edit-cabinet">Lưu Thay Đổi</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="B1js.js"></script>
+</body>
+</html>
